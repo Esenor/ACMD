@@ -1,42 +1,38 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Card, Badge, notification } from 'antd'
+import { Card } from 'antd'
 import Title from './Title'
 import TagContainer from './TagContainer'
-import TechnologyTag, { TechnologyTagProps } from './TechnologyTag'
-import LocationTag, { LocationTagProps } from './LocationTag'
+import TechnologyTag from './TechnologyTag'
+import LocationTag from './LocationTag'
+import InformationBadges from './InformationBadges'
+import { usageEnum, LocationInterface, TechnologyInterface, InformationInterface } from '../@types/ApplicationComponent'
 
-export { TypeEnum as LocationTypeEnum } from './LocationTag'
-export enum UsageEnum {
-  WebApp = 'web-app',
-  Website = 'website',
-  Service = 'service',
-  Backend = 'backend'
-}
 export interface ApplicationComponentProps {
-  usage: UsageEnum
+  usage: usageEnum
   color?: string
   name: string
   description?: string
-  technologies: TechnologyTagProps[]
-  locations: LocationTagProps[]
+  technologies: TechnologyInterface[]
+  locations: LocationInterface[]
+  informations: InformationInterface[]
 }
 
 interface StyledCardProps {
   topColor?: string
 }
 
-const ApplicationComponent = ({ color, name, description, technologies, locations }: ApplicationComponentProps) => {
-  const technologiesTags = technologies.map((t: TechnologyTagProps, i) => (
+const ApplicationComponent = ({ informations, name, description, technologies, locations }: ApplicationComponentProps) => {
+  const technologiesTags = technologies.map((t: TechnologyInterface, i) => (
     <TechnologyTag name={t.name} color={t.color} key={i}/>
   ))
-  const locationsTags = locations.map((l: LocationTagProps, i) => (
-    <LocationTag locationType={l.locationType} name={l.name} key={i}/>
+  const locationsTags = locations.map((l: LocationInterface, i) => (
+    <LocationTag locationType={l.environment} name={l.name} key={i}/>
   ))
   return (
     <>
       <StyledCard>
-        <Badges/>
+        <InformationBadges informations={informations} />
         <Card>
           <Title title={name} subtitle={description} />
           <TagContainer>{technologiesTags}</TagContainer>
@@ -46,62 +42,6 @@ const ApplicationComponent = ({ color, name, description, technologies, location
     </>
   )
 }
-
-const errorNotification = (message: string, description: string, c: number = 1) => {
-  [...new Array(c)].forEach(i => {
-    notification.error({
-      message,
-      description,
-      icon: null,
-      duration: 0
-    })
-  })
-}
-
-const warningNotification = (message: string, description: string, c: number = 1) => {
-  [...new Array(c)].forEach(i => {
-    notification.warning({
-      message,
-      description,
-      icon: null,
-      duration: 0
-    })
-  })
-}
-
-const successNotification = (message: string, description: string, c: number = 1) => {
-  [...new Array(c)].forEach(i => {
-    notification.success({
-      message,
-      description,
-      icon: null,
-      duration: 0
-    })
-  })
-}
-const Badges = () => (
-  <StyledBadges>
-    <span onClick={e => errorNotification('Error message', 'lorem ipsum en dolo del assarim, tidi', 1)}>
-      <Badge count={1} style={{ margin: 'auto 2px', backgroundColor: '#F5222D' }}/>
-    </span>
-    <span onClick={e => warningNotification('Warning message', 'lorem ipsum en dolo del assarim, tidi', 2)}>
-      <Badge count={2} style={{ margin: 'auto 2px', backgroundColor: '#FA8C16' }}/>
-    </span>
-    <span onClick={e => successNotification('Success message', 'lorem ipsum en dolo del assarim, tidi', 3)}>
-      <Badge count={3} style={{ margin: 'auto 2px', backgroundColor: '#52C41A' }}/>
-    </span>
-  </StyledBadges>
-)
-
-const StyledBadges = styled.div`
-  position: relative;
-  top: 10px;
-  z-index: 999;
-  left: 15px;
-  &>span{
-    cursor: pointer;
-  }
-`
 
 const StyledCard = styled.div`
   .ant-card {

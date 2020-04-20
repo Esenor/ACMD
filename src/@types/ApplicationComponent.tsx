@@ -31,8 +31,8 @@ export interface LocationInterface {
 export interface InformationInterface {
   scope: informationScopeEnum
   title: string
-  message: string
-  link: string
+  message?: string
+  link?: string
 }
 
 export interface ApplicationComponentInterface {

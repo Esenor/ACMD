@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { notification, Badge } from 'antd'
+import { LinkOutlined } from '@ant-design/icons'
 import { informationScopeEnum, InformationInterface } from '../@types/ApplicationComponent'
 
 export interface InformationBadgePropsInterface {
@@ -26,7 +27,7 @@ const displayNotification = (informations: InformationInterface[]) => {
       description: (
         <>
           <div>{ information.message }</div>
-          <div>{ information.link }</div>
+          <div><LinkOutlined/> { information.link }</div>
         </>
       ),
       icon: null,
@@ -52,6 +53,21 @@ const displayNotification = (informations: InformationInterface[]) => {
 
 const InformationBadges = ({ informations }: InformationBadgePropsInterface) => {
   const badgesInformations = informations.reduce((reduced: FormatedInformationsBagesDataInterface, information: InformationInterface) => {
+    switch (information.scope) {
+      case informationScopeEnum.error:
+        reduced.error.informations.push(information)
+        break
+      case informationScopeEnum.warning:
+        reduced.warning.informations.push(information)
+        break
+      case informationScopeEnum.success:
+        reduced.success.informations.push(information)
+        break
+      case informationScopeEnum.info:
+      default:
+        reduced.info.informations.push(information)
+        break
+    }
     return reduced
   }, {
     info: {
@@ -74,9 +90,16 @@ const InformationBadges = ({ informations }: InformationBadgePropsInterface) => 
   return (
     <StyledBadges>
       {
-        badgesInformations.success.informations.length > 0 ? (
-          <span onClick={e => displayNotification(badgesInformations.success.informations)}>
-            <Badge count={badgesInformations.success.informations.length} style={{ margin: 'auto 2px', backgroundColor: badgesInformations.success.color }}/>
+        badgesInformations.error.informations.length > 0 ? (
+          <span onClick={e => displayNotification(badgesInformations.error.informations)}>
+            <Badge count={badgesInformations.error.informations.length} style={{ margin: 'auto 2px', backgroundColor: badgesInformations.error.color }}/>
+          </span>
+        ) : null
+      }
+      {
+        badgesInformations.warning.informations.length > 0 ? (
+          <span onClick={e => displayNotification(badgesInformations.warning.informations)}>
+            <Badge count={badgesInformations.warning.informations.length} style={{ margin: 'auto 2px', backgroundColor: badgesInformations.warning.color }}/>
           </span>
         ) : null
       }
@@ -84,6 +107,13 @@ const InformationBadges = ({ informations }: InformationBadgePropsInterface) => 
         badgesInformations.success.informations.length > 0 ? (
           <span onClick={e => displayNotification(badgesInformations.success.informations)}>
             <Badge count={badgesInformations.success.informations.length} style={{ margin: 'auto 2px', backgroundColor: badgesInformations.success.color }}/>
+          </span>
+        ) : null
+      }
+      {
+        badgesInformations.info.informations.length > 0 ? (
+          <span onClick={e => displayNotification(badgesInformations.info.informations)}>
+            <Badge count={badgesInformations.info.informations.length} style={{ margin: 'auto 2px', backgroundColor: badgesInformations.info.color }}/>
           </span>
         ) : null
       }

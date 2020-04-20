@@ -1,39 +1,9 @@
-import { ApplicationComponentProps, LocationTypeEnum, UsageEnum } from './components/ApplicationComponent'
-
-export const applicationComponentsData: ApplicationComponentProps[] = [
+import { ApplicationComponentInterface, environmentEnum, usageEnum, informationScopeEnum } from './@types/ApplicationComponent'
+export const applicationComponentsData: ApplicationComponentInterface[] = [
   {
-    usage: UsageEnum.Website,
-    name: 'first.application.name.dockerized',
-    color: 'coral',
-    description: 'One of the first NodeJs dockerized application One of the first NodeJs dockerized application One of the first',
-    technologies: [
-      {
-        name: 'Docker',
-        color: 'blue'
-      },
-      {
-        name: 'Node',
-        color: 'yellow'
-      }
-    ],
-    locations: [
-      {
-        locationType: LocationTypeEnum.prod,
-        name: 'prod.domain.io'
-      },
-      {
-        locationType: LocationTypeEnum.preprod,
-        name: 'preprod.domain.io'
-      },
-      {
-        locationType: LocationTypeEnum.qa,
-        name: 'qa.domain.io'
-      }
-    ]
-  },
-  {
-    usage: UsageEnum.Service,
-    name: 'second.application.name.dockerized',
+    usage: usageEnum.WebApp,
+    name: 'application.component.name',
+    description: 'the application component description',
     technologies: [
       {
         name: 'Docker',
@@ -42,350 +12,40 @@ export const applicationComponentsData: ApplicationComponentProps[] = [
     ],
     locations: [
       {
-        locationType: LocationTypeEnum.qa,
-        name: 'qa.domain.io'
-      }
-    ]
-  },
-  {
-    usage: UsageEnum.Backend,
-    name: 'third.application.name.dockerized',
-    color: 'red',
-    technologies: [
-      {
-        name: 'Redis',
-        color: 'red'
+        name: 'prod.domain.com',
+        environment: environmentEnum.prod
       }
     ],
-    locations: [
+    informations: [
       {
-        locationType: LocationTypeEnum.prod,
-        name: 'prod.domain.io'
+        title: '1 an info',
+        message: 'Lorem ipsume en dolo',
+        link: 'fii foo',
+        scope: informationScopeEnum.info
       },
       {
-        locationType: LocationTypeEnum.qa,
-        name: 'qa.domain.io'
-      }
-    ]
-  },
-  {
-    usage: UsageEnum.WebApp,
-    name: 'react.application.name.dockerized',
-    description: 'basic React app provided by cdn',
-    technologies: [
-      {
-        name: 'Docker',
-        color: 'blue'
+        title: '2 an info',
+        message: 'Lorem ipsume en dolo',
+        link: 'fii foo',
+        scope: informationScopeEnum.info
       },
       {
-        name: 'React',
-        color: 'blue'
+        title: '3 an info',
+        message: 'Lorem ipsume en dolo',
+        link: 'fii foo',
+        scope: informationScopeEnum.error
       },
       {
-        name: 'Hapi',
-        color: 'coral'
-      }
-    ],
-    locations: [
-      {
-        locationType: LocationTypeEnum.prod,
-        name: 'cdn.domain.io'
-      }
-    ]
-  },
-
-
-  {
-    usage: UsageEnum.Backend,
-    name: 'third.application.name.dockerized',
-    color: 'red',
-    technologies: [
-      {
-        name: 'Redis',
-        color: 'red'
-      }
-    ],
-    locations: [
-      {
-        locationType: LocationTypeEnum.prod,
-        name: 'prod.domain.io'
+        title: '4 an info',
+        message: 'Lorem ipsume en dolo',
+        link: 'fii foo',
+        scope: informationScopeEnum.warning
       },
       {
-        locationType: LocationTypeEnum.qa,
-        name: 'qa.domain.io'
-      }
-    ]
-  },
-  {
-    usage: UsageEnum.Backend,
-    name: 'third.application.name.dockerized',
-    color: 'red',
-    technologies: [
-      {
-        name: 'Redis',
-        color: 'red'
-      }
-    ],
-    locations: [
-      {
-        locationType: LocationTypeEnum.prod,
-        name: 'prod.domain.io'
-      },
-      {
-        locationType: LocationTypeEnum.qa,
-        name: 'qa.domain.io'
-      }
-    ]
-  },
-  {
-    usage: UsageEnum.Backend,
-    name: 'third.application.name.dockerized',
-    color: 'red',
-    technologies: [
-      {
-        name: 'Redis',
-        color: 'red'
-      }
-    ],
-    locations: [
-      {
-        locationType: LocationTypeEnum.prod,
-        name: 'prod.domain.io'
-      },
-      {
-        locationType: LocationTypeEnum.qa,
-        name: 'qa.domain.io'
-      }
-    ]
-  },
-  {
-    usage: UsageEnum.Backend,
-    name: 'third.application.name.dockerized',
-    color: 'red',
-    technologies: [
-      {
-        name: 'Redis',
-        color: 'red'
-      }
-    ],
-    locations: [
-      {
-        locationType: LocationTypeEnum.prod,
-        name: 'prod.domain.io'
-      },
-      {
-        locationType: LocationTypeEnum.qa,
-        name: 'qa.domain.io'
-      }
-    ]
-  },
-  {
-    usage: UsageEnum.Backend,
-    name: 'third.application.name.dockerized',
-    color: 'red',
-    technologies: [
-      {
-        name: 'Redis',
-        color: 'red'
-      }
-    ],
-    locations: [
-      {
-        locationType: LocationTypeEnum.prod,
-        name: 'prod.domain.io'
-      },
-      {
-        locationType: LocationTypeEnum.qa,
-        name: 'qa.domain.io'
-      }
-    ]
-  },
-  {
-    usage: UsageEnum.Backend,
-    name: 'third.application.name.dockerized',
-    color: 'red',
-    technologies: [
-      {
-        name: 'Redis',
-        color: 'red'
-      }
-    ],
-    locations: [
-      {
-        locationType: LocationTypeEnum.prod,
-        name: 'prod.domain.io'
-      },
-      {
-        locationType: LocationTypeEnum.qa,
-        name: 'qa.domain.io'
-      }
-    ]
-  },
-  {
-    usage: UsageEnum.Backend,
-    name: 'third.application.name.dockerized',
-    color: 'red',
-    technologies: [
-      {
-        name: 'Redis',
-        color: 'red'
-      }
-    ],
-    locations: [
-      {
-        locationType: LocationTypeEnum.prod,
-        name: 'prod.domain.io'
-      },
-      {
-        locationType: LocationTypeEnum.qa,
-        name: 'qa.domain.io'
-      }
-    ]
-  },
-  {
-    usage: UsageEnum.Backend,
-    name: 'third.application.name.dockerized',
-    color: 'red',
-    technologies: [
-      {
-        name: 'Redis',
-        color: 'red'
-      }
-    ],
-    locations: [
-      {
-        locationType: LocationTypeEnum.prod,
-        name: 'prod.domain.io'
-      },
-      {
-        locationType: LocationTypeEnum.qa,
-        name: 'qa.domain.io'
-      }
-    ]
-  },
-  {
-    usage: UsageEnum.Backend,
-    name: 'third.application.name.dockerized',
-    color: 'red',
-    technologies: [
-      {
-        name: 'Redis',
-        color: 'red'
-      }
-    ],
-    locations: [
-      {
-        locationType: LocationTypeEnum.prod,
-        name: 'prod.domain.io'
-      },
-      {
-        locationType: LocationTypeEnum.qa,
-        name: 'qa.domain.io'
-      }
-    ]
-  },
-  {
-    usage: UsageEnum.Backend,
-    name: 'third.application.name.dockerized',
-    color: 'red',
-    technologies: [
-      {
-        name: 'Redis',
-        color: 'red'
-      }
-    ],
-    locations: [
-      {
-        locationType: LocationTypeEnum.prod,
-        name: 'prod.domain.io'
-      },
-      {
-        locationType: LocationTypeEnum.qa,
-        name: 'qa.domain.io'
-      }
-    ]
-  },
-  {
-    usage: UsageEnum.Backend,
-    name: 'third.application.name.dockerized',
-    color: 'red',
-    technologies: [
-      {
-        name: 'Redis',
-        color: 'red'
-      }
-    ],
-    locations: [
-      {
-        locationType: LocationTypeEnum.prod,
-        name: 'prod.domain.io'
-      },
-      {
-        locationType: LocationTypeEnum.qa,
-        name: 'qa.domain.io'
-      }
-    ]
-  },
-  {
-    usage: UsageEnum.Backend,
-    name: 'third.application.name.dockerized',
-    color: 'red',
-    technologies: [
-      {
-        name: 'Redis',
-        color: 'red'
-      }
-    ],
-    locations: [
-      {
-        locationType: LocationTypeEnum.prod,
-        name: 'prod.domain.io'
-      },
-      {
-        locationType: LocationTypeEnum.qa,
-        name: 'qa.domain.io'
-      }
-    ]
-  },
-  {
-    usage: UsageEnum.Backend,
-    name: 'third.application.name.dockerized',
-    color: 'red',
-    technologies: [
-      {
-        name: 'Redis',
-        color: 'red'
-      }
-    ],
-    locations: [
-      {
-        locationType: LocationTypeEnum.prod,
-        name: 'prod.domain.io'
-      },
-      {
-        locationType: LocationTypeEnum.qa,
-        name: 'qa.domain.io'
-      }
-    ]
-  },
-  {
-    usage: UsageEnum.Backend,
-    name: 'third.application.name.dockerized',
-    color: 'red',
-    technologies: [
-      {
-        name: 'Redis',
-        color: 'red'
-      }
-    ],
-    locations: [
-      {
-        locationType: LocationTypeEnum.prod,
-        name: 'prod.domain.io'
-      },
-      {
-        locationType: LocationTypeEnum.qa,
-        name: 'qa.domain.io'
+        title: '5 an info',
+        message: 'Lorem ipsume en dolo',
+        link: 'fii foo',
+        scope: informationScopeEnum.success
       }
     ]
   }

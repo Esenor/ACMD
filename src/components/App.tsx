@@ -1,18 +1,19 @@
 import React from 'react'
 import { Layout, Row, Col, Divider } from 'antd'
 import styled, { createGlobalStyle } from 'styled-components'
-import ApplicationComponent, { UsageEnum, ApplicationComponentProps } from './ApplicationComponent'
+import ApplicationComponent from './ApplicationComponent'
+import { ApplicationComponentInterface, usageEnum } from '../@types/ApplicationComponent'
 import { applicationComponentsData } from '../data'
 
-const getApplicationComponentsByUsage = (applicationComponentsDataList: ApplicationComponentProps[], usage: UsageEnum) => applicationComponentsDataList.filter((applicationComponentData: ApplicationComponentProps) => applicationComponentData.usage === usage).map((a, i) => (
+const getApplicationComponentsByUsage = (applicationComponentsDataList: ApplicationComponentInterface[], usage: usageEnum) => applicationComponentsDataList.filter((applicationComponentData: ApplicationComponentInterface) => applicationComponentData.usage === usage).map((a, i) => (
     <Col xs={24} sm={12} md={6} key={i}>
       <ApplicationComponent
         usage={a.usage}
         name={a.name}
-        color={a.color}
         description={a.description}
         technologies={a.technologies}
         locations={a.locations}
+        informations={a.informations}
       />
     </Col>
 ))
@@ -25,25 +26,25 @@ const App = () => {
         <PaddedContent>
           <StyledDivider orientation='left'>WebApp</StyledDivider>
           <Row gutter={[8, 8]}>
-            {getApplicationComponentsByUsage(applicationComponentsData, UsageEnum.WebApp)}
+            {getApplicationComponentsByUsage(applicationComponentsData, usageEnum.WebApp)}
           </Row>
         </PaddedContent>
         <PaddedContent>
           <StyledDivider orientation='left'>Websites</StyledDivider>
           <Row gutter={[8, 8]}>
-            {getApplicationComponentsByUsage(applicationComponentsData, UsageEnum.Website)}
+            {getApplicationComponentsByUsage(applicationComponentsData, usageEnum.Website)}
           </Row>
         </PaddedContent>
         <PaddedContent>
           <StyledDivider orientation='left'>Services</StyledDivider>
           <Row gutter={[8, 8]}>
-            {getApplicationComponentsByUsage(applicationComponentsData, UsageEnum.Service)}
+            {getApplicationComponentsByUsage(applicationComponentsData, usageEnum.Service)}
           </Row>
         </PaddedContent>
         <PaddedContent>
           <StyledDivider orientation='left'>Backend</StyledDivider>
           <Row gutter={[8, 8]}>
-            {getApplicationComponentsByUsage(applicationComponentsData, UsageEnum.Backend)}
+            {getApplicationComponentsByUsage(applicationComponentsData, usageEnum.Backend)}
           </Row>
         </PaddedContent>
       </AppLayout>
