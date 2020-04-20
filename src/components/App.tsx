@@ -1,64 +1,78 @@
 import React from 'react'
 import { Layout, Row, Col, Divider } from 'antd'
-import styled from 'styled-components'
-import ApplicationComponent from './ApplicationComponent'
+import styled, { createGlobalStyle } from 'styled-components'
+import ApplicationComponent, { UsageEnum, ApplicationComponentProps } from './ApplicationComponent'
+import { applicationComponentsData } from '../data'
 
-const { Footer, Content } = Layout
+const getApplicationComponentsByUsage = (applicationComponentsDataList: ApplicationComponentProps[], usage: UsageEnum) => applicationComponentsDataList.filter((applicationComponentData: ApplicationComponentProps) => applicationComponentData.usage === usage).map((a, i) => (
+    <Col xs={24} sm={12} md={6} key={i}>
+      <ApplicationComponent
+        usage={a.usage}
+        name={a.name}
+        color={a.color}
+        description={a.description}
+        technologies={a.technologies}
+        locations={a.locations}
+      />
+    </Col>
+))
 
 const App = () => {
   return (
     <>
-      <FullHeightLayout>
+      <GlobalStyle/>
+      <AppLayout>
         <PaddedContent>
-          <Divider orientation='left'>Card example</Divider>
-          <Row gutter={[10, 10]}>
-            <Col xs={24} sm={12} md={6} lg={4}>
-              <ApplicationComponent />
-            </Col>
-            <Col xs={24} sm={12} md={6} lg={4}>
-              <ApplicationComponent color='#5AA2E8'/>
-            </Col>
-            <Col xs={24} sm={12} md={6} lg={4}>
-              <ApplicationComponent />
-            </Col>
-            <Col xs={24} sm={12} md={6} lg={4}>
-              <ApplicationComponent color='#6389FF'/>
-            </Col>
-            <Col xs={24} sm={12} md={6} lg={4}>
-              <ApplicationComponent color='#63FFCE'/>
-            </Col>
-            <Col xs={24} sm={12} md={6} lg={4}>
-              <ApplicationComponent />
-            </Col>
-            <Col xs={24} sm={12} md={6} lg={4}>
-              <ApplicationComponent />
-            </Col>
-            <Col xs={24} sm={12} md={6} lg={4}>
-              <ApplicationComponent color='coral'/>
-            </Col>
-            <Col xs={24} sm={12} md={6} lg={4}>
-              <ApplicationComponent color='red'/>
-            </Col>
-            <Col xs={24} sm={12} md={6} lg={4}>
-              <ApplicationComponent />
-            </Col>
-            <Col xs={24} sm={12} md={6} lg={4}>
-              <ApplicationComponent />
-            </Col>
+          <StyledDivider orientation='left'>WebApp</StyledDivider>
+          <Row gutter={[8, 8]}>
+            {getApplicationComponentsByUsage(applicationComponentsData, UsageEnum.WebApp)}
           </Row>
         </PaddedContent>
-        <Footer>wip</Footer>
-      </FullHeightLayout>
+        <PaddedContent>
+          <StyledDivider orientation='left'>Websites</StyledDivider>
+          <Row gutter={[8, 8]}>
+            {getApplicationComponentsByUsage(applicationComponentsData, UsageEnum.Website)}
+          </Row>
+        </PaddedContent>
+        <PaddedContent>
+          <StyledDivider orientation='left'>Services</StyledDivider>
+          <Row gutter={[8, 8]}>
+            {getApplicationComponentsByUsage(applicationComponentsData, UsageEnum.Service)}
+          </Row>
+        </PaddedContent>
+        <PaddedContent>
+          <StyledDivider orientation='left'>Backend</StyledDivider>
+          <Row gutter={[8, 8]}>
+            {getApplicationComponentsByUsage(applicationComponentsData, UsageEnum.Backend)}
+          </Row>
+        </PaddedContent>
+      </AppLayout>
     </>
   )
 }
 
 export default App
 
-const FullHeightLayout = styled(Layout)`
-  height: 100%;
+const AppLayout = styled(Layout)`
+  margin: 40px;
+  padding: 0px;
+  background: #FFFFFF;
+  border-radius: 5px;
 `
 
-const PaddedContent = styled(Content)`
+const PaddedContent = styled.div`
   padding: 24px 50px;
+`
+
+const StyledDivider = styled(Divider)`
+  .ant-divider-inner-text {
+    color: #6E6D7A;
+    text-transform: uppercase;
+  }
+`
+
+const GlobalStyle = createGlobalStyle`
+  html, body {
+    background: #2E59E1;
+  }
 `
