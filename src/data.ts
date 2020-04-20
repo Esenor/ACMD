@@ -48,5 +48,103 @@ export const applicationComponentsData: ApplicationComponentInterface[] = [
         scope: informationScopeEnum.success
       }
     ]
+  },
+  {
+    usage: usageEnum.WebApp,
+    name: 'fii',
+    technologies: [],
+    locations: [],
+    informations: []
+  },
+  {
+    usage: usageEnum.WebApp,
+    name: 'fii',
+    technologies: [],
+    locations: [],
+    informations: []
+  },
+  {
+    usage: usageEnum.WebApp,
+    name: 'fii',
+    technologies: [],
+    locations: [],
+    informations: []
+  },
+  {
+    usage: usageEnum.WebApp,
+    name: 'fii',
+    technologies: [],
+    locations: [],
+    informations: []
+  },
+  {
+    usage: usageEnum.WebApp,
+    name: 'fii',
+    technologies: [],
+    locations: [],
+    informations: []
+  },
+  {
+    usage: usageEnum.WebApp,
+    name: 'fii',
+    technologies: [],
+    locations: [],
+    informations: []
+  },
+  {
+    usage: usageEnum.WebApp,
+    name: 'fii',
+    technologies: [],
+    locations: [],
+    informations: []
+  },
+  {
+    usage: usageEnum.WebApp,
+    name: 'fii',
+    technologies: [],
+    locations: [],
+    informations: []
+  },
+  {
+    usage: usageEnum.WebApp,
+    name: 'fii',
+    technologies: [],
+    locations: [],
+    informations: []
+  },
+  {
+    usage: usageEnum.WebApp,
+    name: 'fii',
+    technologies: [],
+    locations: [],
+    informations: []
+  },
+  {
+    usage: usageEnum.WebApp,
+    name: 'fii',
+    technologies: [],
+    locations: [],
+    informations: []
+  },
+  {
+    usage: usageEnum.WebApp,
+    name: 'fii',
+    technologies: [],
+    locations: [],
+    informations: []
+  },
+  {
+    usage: usageEnum.WebApp,
+    name: 'fii',
+    technologies: [],
+    locations: [],
+    informations: []
+  },
+  {
+    usage: usageEnum.WebApp,
+    name: 'fii',
+    technologies: [],
+    locations: [],
+    informations: []
   }
 ]

@@ -123,9 +123,7 @@ const InformationBadges = ({ informations }: InformationBadgePropsInterface) => 
 
 const StyledBadges = styled.div`
   position: relative;
-  top: 10px;
-  z-index: 999;
-  left: 15px;
+  top: -8px;
   &>span{
     cursor: pointer;
   }

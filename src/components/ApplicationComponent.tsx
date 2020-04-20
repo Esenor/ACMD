@@ -32,8 +32,8 @@ const ApplicationComponent = ({ informations, name, description, technologies, l
   return (
     <>
       <StyledCard>
-        <InformationBadges informations={informations} />
         <Card>
+          <InformationBadges informations={informations} />
           <Title title={name} subtitle={description} />
           <TagContainer>{technologiesTags}</TagContainer>
           <TagContainer>{locationsTags}</TagContainer>
@@ -45,6 +45,7 @@ const ApplicationComponent = ({ informations, name, description, technologies, l
 
 const StyledCard = styled.div`
   .ant-card {
+    min-height: 200px;
     border-radius: 5px;
     color: #6E6D7A;
     background: #F8F9FB;
