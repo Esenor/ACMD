@@ -1,151 +1,75 @@
 import { ApplicationComponentInterface, environmentEnum, usageEnum, informationScopeEnum } from './@types/ApplicationComponent'
-export const applicationComponentsData: ApplicationComponentInterface[] = [
-  {
-    usage: usageEnum.asset,
-    name: 'application.component.name',
-    summary: 'lorem fi foo',
-    description: 'the application component description',
-    technologies: [
-      {
-        name: 'Docker',
-        color: 'blue'
+import faker from 'faker'
+
+const getStub = (usage: usageEnum): ApplicationComponentInterface => {
+  const name: string = `${faker.company.companyName()}:${faker.internet.domainName()}`
+  return {
+    usage,
+    name,
+    summary: faker.lorem.sentence(),
+    description: faker.lorem.paragraph(10),
+    technologies: [...new Array(faker.random.number(4))].map(i => {
+      return {
+        name: faker.hacker.abbreviation(),
+        color: faker.internet.color()
       }
-    ],
+    }),
     locations: [
       {
-        name: 'prod.domain.com',
+        name: faker.internet.domainName(),
         environment: environmentEnum.prod
+      },
+      {
+        name: faker.internet.domainName(),
+        environment: environmentEnum.preprod
+      },
+      {
+        name: faker.internet.domainName(),
+        environment: environmentEnum.qa
       }
     ],
-    informations: [
-      {
-        title: '1 an info',
-        message: 'Lorem ipsume en dolo',
-        link: 'fii foo',
-        scope: informationScopeEnum.info
-      },
-      {
-        title: '2 an info',
-        message: 'Lorem ipsume en dolo',
-        link: 'fii foo',
-        scope: informationScopeEnum.info
-      },
-      {
-        title: '3 an info',
-        message: 'Lorem ipsume en dolo',
-        link: 'fii foo',
-        scope: informationScopeEnum.error
-      },
-      {
-        title: '4 an info',
-        message: 'Lorem ipsume en dolo',
-        link: 'fii foo',
-        scope: informationScopeEnum.warning
-      },
-      {
-        title: '5 an info',
-        message: 'Lorem ipsume en dolo',
-        link: 'fii foo',
-        scope: informationScopeEnum.success
-      }
-    ]
-  },
-  {
-    usage: usageEnum.asset,
-    name: 'fii',
-    technologies: [],
-    locations: [],
-    informations: []
-  },
-  {
-    usage: usageEnum.asset,
-    name: 'fii',
-    technologies: [],
-    locations: [],
-    informations: []
-  },
-  {
-    usage: usageEnum.asset,
-    name: 'fii',
-    technologies: [],
-    locations: [],
-    informations: []
-  },
-  {
-    usage: usageEnum.asset,
-    name: 'fii',
-    technologies: [],
-    locations: [],
-    informations: []
-  },
-  {
-    usage: usageEnum.asset,
-    name: 'fii',
-    technologies: [],
-    locations: [],
-    informations: []
-  },
-  {
-    usage: usageEnum.asset,
-    name: 'fii',
-    technologies: [],
-    locations: [],
-    informations: []
-  },
-  {
-    usage: usageEnum.asset,
-    name: 'fii',
-    technologies: [],
-    locations: [],
-    informations: []
-  },
-  {
-    usage: usageEnum.asset,
-    name: 'fii',
-    technologies: [],
-    locations: [],
-    informations: []
-  },
-  {
-    usage: usageEnum.asset,
-    name: 'fii',
-    technologies: [],
-    locations: [],
-    informations: []
-  },
-  {
-    usage: usageEnum.asset,
-    name: 'fii',
-    technologies: [],
-    locations: [],
-    informations: []
-  },
-  {
-    usage: usageEnum.asset,
-    name: 'fii',
-    technologies: [],
-    locations: [],
-    informations: []
-  },
-  {
-    usage: usageEnum.asset,
-    name: 'fii',
-    technologies: [],
-    locations: [],
-    informations: []
-  },
-  {
-    usage: usageEnum.asset,
-    name: 'fii',
-    technologies: [],
-    locations: [],
-    informations: []
-  },
-  {
-    usage: usageEnum.asset,
-    name: 'fii',
-    technologies: [],
-    locations: [],
-    informations: []
+    informations: (faker.random.boolean()) ? [
+      ...[...new Array(faker.random.number(3))].map(i => {
+        return {
+          title: name,
+          message: faker.lorem.sentences(2),
+          link: faker.internet.url(),
+          scope: informationScopeEnum.info
+        }
+      }),
+      ...[...new Array(faker.random.number(3))].map(i => {
+        return {
+          title: name,
+          message: faker.lorem.sentences(2),
+          link: faker.internet.url(),
+          scope: informationScopeEnum.error
+        }
+      }),
+      ...[...new Array(faker.random.number(3))].map(i => {
+        return {
+          title: name,
+          message: faker.lorem.sentences(2),
+          link: faker.internet.url(),
+          scope: informationScopeEnum.warning
+        }
+      }),
+      ...[...new Array(faker.random.number(3))].map(i => {
+        return {
+          title: name,
+          message: faker.lorem.sentences(2),
+          link: faker.internet.url(),
+          scope: informationScopeEnum.success
+        }
+      })
+    ] : []
   }
+}
+
+export const applicationComponentsData: ApplicationComponentInterface[] = [
+  getStub(usageEnum.asset),getStub(usageEnum.asset),getStub(usageEnum.asset),getStub(usageEnum.asset),getStub(usageEnum.asset),getStub(usageEnum.asset),getStub(usageEnum.asset),
+  getStub(usageEnum.webApplication),getStub(usageEnum.webApplication),getStub(usageEnum.webApplication),
+  getStub(usageEnum.service),getStub(usageEnum.service),getStub(usageEnum.service),getStub(usageEnum.service),getStub(usageEnum.service),getStub(usageEnum.service),
+  getStub(usageEnum.service),getStub(usageEnum.service),getStub(usageEnum.service),getStub(usageEnum.service),getStub(usageEnum.service),getStub(usageEnum.service),
+  getStub(usageEnum.service),getStub(usageEnum.service),getStub(usageEnum.service),getStub(usageEnum.service),getStub(usageEnum.service),getStub(usageEnum.service),
+  getStub(usageEnum.backend),getStub(usageEnum.backend),getStub(usageEnum.backend),getStub(usageEnum.backend)
 ]
