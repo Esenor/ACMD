@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@ant-design/icons": "^4.0.6",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
@@ -41,7 +42,9 @@
     ]
   },
   "devDependencies": {
+    "@types/faker": "^4.1.11",
     "@types/styled-components": "^5.0.1",
+    "faker": "^4.1.0",
     "tslint": "^6.1.1",
     "tslint-config-standard": "^9.0.0"
   }

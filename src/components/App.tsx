@@ -1,64 +1,85 @@
 import React from 'react'
-import { Layout, Row, Col, Divider } from 'antd'
-import styled from 'styled-components'
+import { Layout, Row, Col, Divider, Input } from 'antd'
+import styled, { createGlobalStyle } from 'styled-components'
 import ApplicationComponent from './ApplicationComponent'
+import { ApplicationComponentInterface, usageEnum } from '../@types/ApplicationComponent'
+import { applicationComponentsData } from '../data'
 
-const { Footer, Content } = Layout
+const { Search } = Input
+
+const getApplicationComponentsByUsage = (applicationComponentsDataList: ApplicationComponentInterface[], usage: usageEnum) => applicationComponentsDataList.filter((applicationComponentData: ApplicationComponentInterface) => applicationComponentData.usage === usage).map((a, i) => (
+    <Col xs={24} sm={12} md={6} key={i}>
+      <ApplicationComponent
+        usage={a.usage}
+        name={a.name}
+        summary={a.summary}
+        description={a.description}
+        technologies={a.technologies}
+        locations={a.locations}
+        informations={a.informations}
+      />
+    </Col>
+))
 
 const App = () => {
   return (
     <>
-      <FullHeightLayout>
+      <GlobalStyle/>
+      <AppLayout>
+        <Search placeholder='input search text (Tags, Names)' enterButton />
+      </AppLayout>
+      <AppLayout>
         <PaddedContent>
-          <Divider orientation='left'>Card example</Divider>
-          <Row gutter={[10, 10]}>
-            <Col xs={24} sm={12} md={6} lg={4}>
-              <ApplicationComponent />
-            </Col>
-            <Col xs={24} sm={12} md={6} lg={4}>
-              <ApplicationComponent color='#5AA2E8'/>
-            </Col>
-            <Col xs={24} sm={12} md={6} lg={4}>
-              <ApplicationComponent />
-            </Col>
-            <Col xs={24} sm={12} md={6} lg={4}>
-              <ApplicationComponent color='#6389FF'/>
-            </Col>
-            <Col xs={24} sm={12} md={6} lg={4}>
-              <ApplicationComponent color='#63FFCE'/>
-            </Col>
-            <Col xs={24} sm={12} md={6} lg={4}>
-              <ApplicationComponent />
-            </Col>
-            <Col xs={24} sm={12} md={6} lg={4}>
-              <ApplicationComponent />
-            </Col>
-            <Col xs={24} sm={12} md={6} lg={4}>
-              <ApplicationComponent color='coral'/>
-            </Col>
-            <Col xs={24} sm={12} md={6} lg={4}>
-              <ApplicationComponent color='red'/>
-            </Col>
-            <Col xs={24} sm={12} md={6} lg={4}>
-              <ApplicationComponent />
-            </Col>
-            <Col xs={24} sm={12} md={6} lg={4}>
-              <ApplicationComponent />
-            </Col>
+          <StyledDivider orientation='left'>Assets</StyledDivider>
+          <Row gutter={[8, 8]} align='middle'>
+            {getApplicationComponentsByUsage(applicationComponentsData, usageEnum.asset)}
           </Row>
         </PaddedContent>
-        <Footer>wip</Footer>
-      </FullHeightLayout>
+        <PaddedContent>
+          <StyledDivider orientation='left'>Web applications</StyledDivider>
+          <Row gutter={[8, 8]} align='middle'>
+            {getApplicationComponentsByUsage(applicationComponentsData, usageEnum.webApplication)}
+          </Row>
+        </PaddedContent>
+        <PaddedContent>
+          <StyledDivider orientation='left'>Services</StyledDivider>
+          <Row gutter={[8, 8]} align='middle'>
+            {getApplicationComponentsByUsage(applicationComponentsData, usageEnum.service)}
+          </Row>
+        </PaddedContent>
+        <PaddedContent>
+          <StyledDivider orientation='left'>Backend</StyledDivider>
+          <Row gutter={[8, 8]} align='middle'>
+            {getApplicationComponentsByUsage(applicationComponentsData, usageEnum.backend)}
+          </Row>
+        </PaddedContent>
+      </AppLayout>
     </>
   )
 }
 
 export default App
 
-const FullHeightLayout = styled(Layout)`
-  height: 100%;
+const AppLayout = styled(Layout)`
+  margin: 40px;
+  padding: 0px;
+  background: #FFFFFF;
+  border-radius: 5px;
 `
 
-const PaddedContent = styled(Content)`
+const PaddedContent = styled.div`
   padding: 24px 50px;
+`
+
+const StyledDivider = styled(Divider)`
+  .ant-divider-inner-text {
+    color: #6E6D7A;
+    text-transform: uppercase;
+  }
+`
+
+const GlobalStyle = createGlobalStyle`
+  html, body {
+    background: #2E59E1;
+  }
 `
