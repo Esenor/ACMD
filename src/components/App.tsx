@@ -1,9 +1,11 @@
 import React from 'react'
-import { Layout, Row, Col, Divider } from 'antd'
+import { Layout, Row, Col, Divider, Input } from 'antd'
 import styled, { createGlobalStyle } from 'styled-components'
 import ApplicationComponent from './ApplicationComponent'
 import { ApplicationComponentInterface, usageEnum } from '../@types/ApplicationComponent'
 import { applicationComponentsData } from '../data'
+
+const { Search } = Input
 
 const getApplicationComponentsByUsage = (applicationComponentsDataList: ApplicationComponentInterface[], usage: usageEnum) => applicationComponentsDataList.filter((applicationComponentData: ApplicationComponentInterface) => applicationComponentData.usage === usage).map((a, i) => (
     <Col xs={24} sm={12} md={6} key={i}>
@@ -24,27 +26,30 @@ const App = () => {
     <>
       <GlobalStyle/>
       <AppLayout>
+        <Search placeholder='input search text (Tags, Names)' enterButton />
+      </AppLayout>
+      <AppLayout>
         <PaddedContent>
           <StyledDivider orientation='left'>Assets</StyledDivider>
-          <Row gutter={[8, 8]}>
+          <Row gutter={[8, 8]} align='middle'>
             {getApplicationComponentsByUsage(applicationComponentsData, usageEnum.asset)}
           </Row>
         </PaddedContent>
         <PaddedContent>
           <StyledDivider orientation='left'>Web applications</StyledDivider>
-          <Row gutter={[8, 8]}>
+          <Row gutter={[8, 8]} align='middle'>
             {getApplicationComponentsByUsage(applicationComponentsData, usageEnum.webApplication)}
           </Row>
         </PaddedContent>
         <PaddedContent>
           <StyledDivider orientation='left'>Services</StyledDivider>
-          <Row gutter={[8, 8]}>
+          <Row gutter={[8, 8]} align='middle'>
             {getApplicationComponentsByUsage(applicationComponentsData, usageEnum.service)}
           </Row>
         </PaddedContent>
         <PaddedContent>
           <StyledDivider orientation='left'>Backend</StyledDivider>
-          <Row gutter={[8, 8]}>
+          <Row gutter={[8, 8]} align='middle'>
             {getApplicationComponentsByUsage(applicationComponentsData, usageEnum.backend)}
           </Row>
         </PaddedContent>

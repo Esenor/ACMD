@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { Card, Modal, Button, Divider } from 'antd'
+import { Card, Modal, Button, Divider, Empty, List } from 'antd'
 import { SearchOutlined } from '@ant-design/icons'
 import Title from './Title'
-import TagContainer from './TagContainer'
+import TagContainer, { tagContainerSizeEnum } from './TagContainer'
 import TechnologyTag from './TechnologyTag'
 import LocationTag from './LocationTag'
 import InformationBadges from './InformationBadges'
+import Information from './Information'
 import { usageEnum, LocationInterface, TechnologyInterface, InformationInterface } from '../@types/ApplicationComponent'
 
 export interface ApplicationComponentProps {
@@ -56,19 +57,32 @@ const ApplicationComponent = ({ informations, name, description, summary, techno
         onOk={closeModal}
         footer={<Button type='primary' onClick={closeModal}>Ok</Button>}>
         <Divider orientation='left'>Description</Divider>
-        <p>{description}</p>
+        <p>{(description) ? description : <Empty/>}</p>
         <Divider orientation='left'>Technologies</Divider>
-        <TagContainer>{technologiesTags}</TagContainer>
+        <TagContainer size={tagContainerSizeEnum.small}>{technologiesTags}</TagContainer>
         <Divider orientation='left'>Environments locations</Divider>
-        <TagContainer>{locationsTags}</TagContainer>
+        <TagContainer size={tagContainerSizeEnum.small}>{locationsTags}</TagContainer>
         <Divider orientation='left'>Actions</Divider>
-        <InformationBadges informations={informations} />
+        <>
+          {
+            (informations.length > 0) ?
+            <List>
+              {
+                informations.map((i: InformationInterface, c: number) => (
+                  <Information information={i} key={c}/>
+                ))
+              }
+            </List>
+            : <Empty/>
+          }
+        </>
       </StyledModal>
     </>
   )
 }
 
 const StyledModal = styled(Modal)`
+  top: 20px;
   .ant-modal-header {
     border-radius: 5px 5px 0px 0px;
   }
