@@ -1,8 +1,9 @@
 import { ApplicationComponentInterface, environmentEnum, usageEnum, informationScopeEnum } from './@types/ApplicationComponent'
 export const applicationComponentsData: ApplicationComponentInterface[] = [
   {
-    usage: usageEnum.WebApp,
+    usage: usageEnum.asset,
     name: 'application.component.name',
+    summary: 'lorem fi foo',
     description: 'the application component description',
     technologies: [
       {
@@ -50,98 +51,98 @@ export const applicationComponentsData: ApplicationComponentInterface[] = [
     ]
   },
   {
-    usage: usageEnum.WebApp,
+    usage: usageEnum.asset,
     name: 'fii',
     technologies: [],
     locations: [],
     informations: []
   },
   {
-    usage: usageEnum.WebApp,
+    usage: usageEnum.asset,
     name: 'fii',
     technologies: [],
     locations: [],
     informations: []
   },
   {
-    usage: usageEnum.WebApp,
+    usage: usageEnum.asset,
     name: 'fii',
     technologies: [],
     locations: [],
     informations: []
   },
   {
-    usage: usageEnum.WebApp,
+    usage: usageEnum.asset,
     name: 'fii',
     technologies: [],
     locations: [],
     informations: []
   },
   {
-    usage: usageEnum.WebApp,
+    usage: usageEnum.asset,
     name: 'fii',
     technologies: [],
     locations: [],
     informations: []
   },
   {
-    usage: usageEnum.WebApp,
+    usage: usageEnum.asset,
     name: 'fii',
     technologies: [],
     locations: [],
     informations: []
   },
   {
-    usage: usageEnum.WebApp,
+    usage: usageEnum.asset,
     name: 'fii',
     technologies: [],
     locations: [],
     informations: []
   },
   {
-    usage: usageEnum.WebApp,
+    usage: usageEnum.asset,
     name: 'fii',
     technologies: [],
     locations: [],
     informations: []
   },
   {
-    usage: usageEnum.WebApp,
+    usage: usageEnum.asset,
     name: 'fii',
     technologies: [],
     locations: [],
     informations: []
   },
   {
-    usage: usageEnum.WebApp,
+    usage: usageEnum.asset,
     name: 'fii',
     technologies: [],
     locations: [],
     informations: []
   },
   {
-    usage: usageEnum.WebApp,
+    usage: usageEnum.asset,
     name: 'fii',
     technologies: [],
     locations: [],
     informations: []
   },
   {
-    usage: usageEnum.WebApp,
+    usage: usageEnum.asset,
     name: 'fii',
     technologies: [],
     locations: [],
     informations: []
   },
   {
-    usage: usageEnum.WebApp,
+    usage: usageEnum.asset,
     name: 'fii',
     technologies: [],
     locations: [],
     informations: []
   },
   {
-    usage: usageEnum.WebApp,
+    usage: usageEnum.asset,
     name: 'fii',
     technologies: [],
     locations: [],

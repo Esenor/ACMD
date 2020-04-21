@@ -10,6 +10,7 @@ const getApplicationComponentsByUsage = (applicationComponentsDataList: Applicat
       <ApplicationComponent
         usage={a.usage}
         name={a.name}
+        summary={a.summary}
         description={a.description}
         technologies={a.technologies}
         locations={a.locations}
@@ -24,27 +25,27 @@ const App = () => {
       <GlobalStyle/>
       <AppLayout>
         <PaddedContent>
-          <StyledDivider orientation='left'>WebApp</StyledDivider>
+          <StyledDivider orientation='left'>Assets</StyledDivider>
           <Row gutter={[8, 8]}>
-            {getApplicationComponentsByUsage(applicationComponentsData, usageEnum.WebApp)}
+            {getApplicationComponentsByUsage(applicationComponentsData, usageEnum.asset)}
           </Row>
         </PaddedContent>
         <PaddedContent>
-          <StyledDivider orientation='left'>Websites</StyledDivider>
+          <StyledDivider orientation='left'>Web applications</StyledDivider>
           <Row gutter={[8, 8]}>
-            {getApplicationComponentsByUsage(applicationComponentsData, usageEnum.Website)}
+            {getApplicationComponentsByUsage(applicationComponentsData, usageEnum.webApplication)}
           </Row>
         </PaddedContent>
         <PaddedContent>
           <StyledDivider orientation='left'>Services</StyledDivider>
           <Row gutter={[8, 8]}>
-            {getApplicationComponentsByUsage(applicationComponentsData, usageEnum.Service)}
+            {getApplicationComponentsByUsage(applicationComponentsData, usageEnum.service)}
           </Row>
         </PaddedContent>
         <PaddedContent>
           <StyledDivider orientation='left'>Backend</StyledDivider>
           <Row gutter={[8, 8]}>
-            {getApplicationComponentsByUsage(applicationComponentsData, usageEnum.Backend)}
+            {getApplicationComponentsByUsage(applicationComponentsData, usageEnum.backend)}
           </Row>
         </PaddedContent>
       </AppLayout>

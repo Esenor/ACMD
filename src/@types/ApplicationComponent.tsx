@@ -5,10 +5,10 @@ export enum environmentEnum {
 }
 
 export enum usageEnum {
-  WebApp = 'web-app',
-  Website = 'website',
-  Service = 'service',
-  Backend = 'backend'
+  asset = 'asset',
+  webApplication = 'webApplication',
+  service = 'service',
+  backend = 'backend'
 }
 
 export enum informationScopeEnum {
@@ -38,6 +38,7 @@ export interface InformationInterface {
 export interface ApplicationComponentInterface {
   usage: usageEnum
   name: string
+  summary?: string
   description?: string
   technologies: TechnologyInterface[]
   locations: LocationInterface[]
