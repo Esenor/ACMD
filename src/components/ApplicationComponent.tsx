@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { Card, Modal, Button, Divider, Empty, List } from 'antd'
+import { Card, Modal, Button, Divider, Empty, List, Table } from 'antd'
+import * as IconsFa from 'react-icons/fa'
 import { SearchOutlined } from '@ant-design/icons'
 import Title from './Title'
 import TagContainer, { tagContainerSizeEnum } from './TagContainer'
@@ -62,6 +63,42 @@ const ApplicationComponent = ({ informations, name, description, summary, techno
         <TagContainer size={tagContainerSizeEnum.small}>{technologiesTags}</TagContainer>
         <Divider orientation='left'>Environments locations</Divider>
         <TagContainer size={tagContainerSizeEnum.small}>{locationsTags}</TagContainer>
+        <Divider orientation='left'>Uris</Divider>
+        <Table columns={[
+          {
+            title: 'Name',
+            dataIndex: 'name',
+            key: 'name',
+            width: '20%'
+          },
+          {
+            title: 'Uri',
+            dataIndex: 'uri',
+            key: 'uri'
+          }
+        ]}
+        dataSource={[
+          {
+            key: '1',
+            name: (<><IconsFa.FaGithub color='grey' size='20px' style={{ verticalAlign: 'sub', marginRight: '5px' }}/><strong>GitHub</strong></>),
+            uri: 'https://github.com/Esenor/ACMD'
+          },
+          {
+            key: '2',
+            name: (<><IconsFa.FaJenkins color='red' size='20px' style={{ verticalAlign: 'sub', marginRight: '5px' }}/><strong>CI Job</strong></>),
+            uri: 'https://ci-tool/acmd/job'
+          },
+          {
+            key: '2',
+            name: (<><IconsFa.FaDocker color='#0073EC' size='20px' style={{ verticalAlign: 'sub', marginRight: '5px' }}/><strong>Docker FROM</strong></>),
+            uri: 'node:14'
+          },
+          {
+            key: '3',
+            name: (<><IconsFa.FaDocker color='#0073EC' size='20px' style={{ verticalAlign: 'sub', marginRight: '5px' }}/><strong>Docker Result</strong></>),
+            uri: 'Esenor/ACMD:latest'
+          }
+        ]}/>
         <Divider orientation='left'>Actions</Divider>
         <>
           {
