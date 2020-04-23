@@ -1,4 +1,4 @@
-import { ApplicationComponentInterface, environmentEnum, usageEnum, informationScopeEnum } from './@types/ApplicationComponent'
+import { ApplicationComponentInterface, environmentEnum, usageEnum, informationScopeEnum, iconEnum } from './@types/ApplicationComponent'
 import faker from 'faker'
 
 const getStub = (usage: usageEnum): ApplicationComponentInterface => {
@@ -14,6 +14,28 @@ const getStub = (usage: usageEnum): ApplicationComponentInterface => {
         color: faker.internet.color()
       }
     }),
+    uris: [
+      {
+        icon: iconEnum.github,
+        name: 'Github',
+        link: faker.internet.url()
+      },
+      {
+        icon: iconEnum.jenkins,
+        name: 'Jenkins CI',
+        link: faker.internet.url()
+      },
+      {
+        icon: iconEnum.docker,
+        name: 'Docker from image',
+        link: faker.random.uuid()
+      },
+      {
+        icon: iconEnum.docker,
+        name: 'Docker result image',
+        link: faker.random.uuid()
+      }
+    ],
     locations: [
       {
         name: faker.internet.domainName(),

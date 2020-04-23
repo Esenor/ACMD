@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { notification, Badge } from 'antd'
-import { LinkOutlined } from '@ant-design/icons'
+import { FaLink } from 'react-icons/fa'
 import { informationScopeEnum, InformationInterface } from '../@types/ApplicationComponent'
 
 export interface InformationBadgePropsInterface {
@@ -27,7 +27,7 @@ const displayNotification = (informations: InformationInterface[]) => {
       description: (
         <>
           <div>{ information.message }</div>
-          <div><LinkOutlined/> { information.link }</div>
+          <div><FaLink/> { information.link }</div>
         </>
       ),
       icon: null,

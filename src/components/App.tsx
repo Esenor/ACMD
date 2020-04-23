@@ -17,6 +17,7 @@ const getApplicationComponentsByUsage = (applicationComponentsDataList: Applicat
         technologies={a.technologies}
         locations={a.locations}
         informations={a.informations}
+        uris={a.uris}
       />
     </Col>
 ))

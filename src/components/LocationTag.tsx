@@ -1,7 +1,9 @@
 import React from 'react'
 import StyledTag from '../styles/StyledTag'
-import { ClusterOutlined } from '@ant-design/icons'
+import styled from 'styled-components'
+import { TiLocation as Icon } from 'react-icons/ti'
 import { environmentEnum } from '../@types/ApplicationComponent'
+import { Tooltip } from 'antd'
 
 export interface LocationTagProps {
   name: string
@@ -22,8 +24,12 @@ const LocationTag = ({ name, locationType }: LocationTagProps) => {
       break
   }
   return (
-    <StyledTag icon={<ClusterOutlined/>} color={color}>{name}</StyledTag>
+    <Tooltip title={`${locationType} environment location`}><StyledTag icon={<StyledIcon/>} color={color}>{name}</StyledTag></Tooltip>
   )
 }
+
+const StyledIcon = styled(Icon)`
+  vertical-align: sub
+`
 
 export default LocationTag

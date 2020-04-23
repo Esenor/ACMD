@@ -4,6 +4,12 @@ export enum environmentEnum {
   qa = 'qa'
 }
 
+export enum iconEnum {
+  docker,
+  github,
+  jenkins
+}
+
 export enum usageEnum {
   asset = 'asset',
   webApplication = 'webApplication',
@@ -35,11 +41,18 @@ export interface InformationInterface {
   link?: string
 }
 
+export interface UriInterface {
+  icon: iconEnum
+  name: string
+  link: string
+}
+
 export interface ApplicationComponentInterface {
   usage: usageEnum
   name: string
   summary?: string
   description?: string
+  uris: UriInterface[]
   technologies: TechnologyInterface[]
   locations: LocationInterface[]
   informations: InformationInterface[]
