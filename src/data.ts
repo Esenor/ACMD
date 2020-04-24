@@ -88,7 +88,7 @@ const getStub = (parentApplication: string, usage: usageEnum): ApplicationCompon
   }
 }
 
-export const applicationComponentsData: ApplicationComponentInterface[] = [
+export const shuffleApplicationComponentsData = () => [
   getStub(faker.company.companyName(), usageEnum.asset),getStub(faker.company.companyName(), usageEnum.asset),getStub('Ecommerce website', usageEnum.asset),getStub(faker.company.companyName(), usageEnum.asset),getStub(faker.company.companyName(), usageEnum.asset),getStub(faker.company.companyName(), usageEnum.asset),getStub(faker.company.companyName(), usageEnum.asset),
   getStub(faker.company.companyName(), usageEnum.webApplication),getStub(faker.company.companyName(), usageEnum.webApplication),getStub('Ecommerce website', usageEnum.webApplication),
   getStub(faker.company.companyName(), usageEnum.service),getStub(faker.company.companyName(), usageEnum.service),getStub(faker.company.companyName(), usageEnum.service),getStub(faker.company.companyName(), usageEnum.service),getStub(faker.company.companyName(), usageEnum.service),getStub(faker.company.companyName(), usageEnum.service),
