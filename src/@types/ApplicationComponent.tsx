@@ -50,6 +50,7 @@ export interface UriInterface {
 export interface ApplicationComponentInterface {
   usage: usageEnum
   name: string
+  parentApplication: string
   summary?: string
   description?: string
   uris: UriInterface[]

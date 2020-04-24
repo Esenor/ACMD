@@ -1,10 +1,11 @@
 import { ApplicationComponentInterface, environmentEnum, usageEnum, informationScopeEnum, iconEnum } from './@types/ApplicationComponent'
 import faker from 'faker'
 
-const getStub = (usage: usageEnum): ApplicationComponentInterface => {
+const getStub = (parentApplication: string, usage: usageEnum): ApplicationComponentInterface => {
   const name: string = `${faker.company.companyName()}:${faker.internet.domainName()}`
   return {
     usage,
+    parentApplication,
     name,
     summary: faker.lorem.sentence(),
     description: faker.lorem.paragraph(10),
@@ -88,10 +89,10 @@ const getStub = (usage: usageEnum): ApplicationComponentInterface => {
 }
 
 export const applicationComponentsData: ApplicationComponentInterface[] = [
-  getStub(usageEnum.asset),getStub(usageEnum.asset),getStub(usageEnum.asset),getStub(usageEnum.asset),getStub(usageEnum.asset),getStub(usageEnum.asset),getStub(usageEnum.asset),
-  getStub(usageEnum.webApplication),getStub(usageEnum.webApplication),getStub(usageEnum.webApplication),
-  getStub(usageEnum.service),getStub(usageEnum.service),getStub(usageEnum.service),getStub(usageEnum.service),getStub(usageEnum.service),getStub(usageEnum.service),
-  getStub(usageEnum.service),getStub(usageEnum.service),getStub(usageEnum.service),getStub(usageEnum.service),getStub(usageEnum.service),getStub(usageEnum.service),
-  getStub(usageEnum.service),getStub(usageEnum.service),getStub(usageEnum.service),getStub(usageEnum.service),getStub(usageEnum.service),getStub(usageEnum.service),
-  getStub(usageEnum.backend),getStub(usageEnum.backend),getStub(usageEnum.backend),getStub(usageEnum.backend)
+  getStub(faker.company.companyName(), usageEnum.asset),getStub(faker.company.companyName(), usageEnum.asset),getStub('Ecommerce website', usageEnum.asset),getStub(faker.company.companyName(), usageEnum.asset),getStub(faker.company.companyName(), usageEnum.asset),getStub(faker.company.companyName(), usageEnum.asset),getStub(faker.company.companyName(), usageEnum.asset),
+  getStub(faker.company.companyName(), usageEnum.webApplication),getStub(faker.company.companyName(), usageEnum.webApplication),getStub('Ecommerce website', usageEnum.webApplication),
+  getStub(faker.company.companyName(), usageEnum.service),getStub(faker.company.companyName(), usageEnum.service),getStub(faker.company.companyName(), usageEnum.service),getStub(faker.company.companyName(), usageEnum.service),getStub(faker.company.companyName(), usageEnum.service),getStub(faker.company.companyName(), usageEnum.service),
+  getStub('Ecommerce website', usageEnum.service),getStub('Async data parser', usageEnum.service),getStub('Ecommerce website', usageEnum.service),getStub(faker.company.companyName(), usageEnum.service),getStub(faker.company.companyName(), usageEnum.service),getStub(faker.company.companyName(), usageEnum.service),
+  getStub('Ecommerce website', usageEnum.service),getStub(faker.company.companyName(), usageEnum.service),getStub('Ecommerce website', usageEnum.service),getStub('Async data parser', usageEnum.service),getStub(faker.company.companyName(), usageEnum.service),getStub('Async data parser', usageEnum.service),
+  getStub('Ecommerce website', usageEnum.backend),getStub('Async data parser', usageEnum.backend),getStub(faker.company.companyName(), usageEnum.backend),getStub(faker.company.companyName(), usageEnum.backend)
 ]

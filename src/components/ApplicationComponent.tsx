@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { Card, Modal, Button, Divider, Empty, List, Table } from 'antd'
+import { Card, Modal, Button, Divider, Empty, List, Table, Descriptions } from 'antd'
 import { SearchOutlined } from '@ant-design/icons'
 import Title from './Title'
 import TagContainer, { tagContainerSizeEnum } from './TagContainer'
@@ -13,8 +13,8 @@ import { usageEnum, LocationInterface, TechnologyInterface, InformationInterface
 
 export interface ApplicationComponentProps {
   usage: usageEnum
-  color?: string
   name: string
+  parentApplication: string
   summary?: string
   description?: string
   uris: UriInterface[]
@@ -23,11 +23,7 @@ export interface ApplicationComponentProps {
   informations: InformationInterface[]
 }
 
-interface StyledCardProps {
-  topColor?: string
-}
-
-const ApplicationComponent = ({ informations, name, description, summary, technologies, locations, uris }: ApplicationComponentProps) => {
+const ApplicationComponent = ({ informations, name, usage, parentApplication, description, summary, technologies, locations, uris }: ApplicationComponentProps) => {
   const [modalIsVisible, changeModalVisibility] = useState(false)
   const closeModal = () => {
     changeModalVisibility(false)
@@ -58,6 +54,10 @@ const ApplicationComponent = ({ informations, name, description, summary, techno
         onCancel={closeModal}
         onOk={closeModal}
         footer={<Button type='primary' onClick={closeModal}>Ok</Button>}>
+        <Descriptions title='Overview'>
+          <Descriptions.Item label='Usage'>{usage}</Descriptions.Item>
+          <Descriptions.Item label='Parent application'>{parentApplication}</Descriptions.Item>
+        </Descriptions>
         <Divider orientation='left'>Description</Divider>
         <p>{(description) ? description : <Empty/>}</p>
         <Divider orientation='left'>Technologies</Divider>
