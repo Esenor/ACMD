@@ -53,7 +53,7 @@ const ApplicationComponent = ({ informations, name, usage, parentApplication, de
         visible={modalIsVisible}
         onCancel={closeModal}
         onOk={closeModal}
-        footer={<Button type='primary' onClick={closeModal}>Ok</Button>}>
+        footer={<Button type='default' onClick={closeModal}>close</Button>}>
         <Descriptions title='Overview'>
           <Descriptions.Item label='Usage'>{usage}</Descriptions.Item>
           <Descriptions.Item label='Parent application'>{parentApplication}</Descriptions.Item>

@@ -7,17 +7,19 @@ export interface UriNamePropsInterface {
   uri: UriInterface
 }
 
+const iconSize: string = '20px'
+
 const UriName = ({ uri }: UriNamePropsInterface) => {
   const getIcon = (iconName: iconEnum) => {
     switch (iconName) {
       case iconEnum.docker:
-        return <IconContainer color='#0073EC'><FaDocker size='20px'/></IconContainer>
+        return <IconContainer color='#0073EC'><FaDocker size={iconSize}/></IconContainer>
       case iconEnum.github:
-        return <IconContainer color='grey'><FaGithub size='20px'/></IconContainer>
+        return <IconContainer color='grey'><FaGithub size={iconSize}/></IconContainer>
       case iconEnum.jenkins:
-        return <IconContainer color='red'><FaJenkins size='20px'/></IconContainer>
+        return <IconContainer color='red'><FaJenkins size={iconSize}/></IconContainer>
       default:
-        return <IconContainer color='grey'><FaLink size='20px'/></IconContainer>
+        return <IconContainer color='grey'><FaLink size={iconSize}/></IconContainer>
     }
   }
   return <>{getIcon(uri.icon)}<strong>{uri.name}</strong></>
