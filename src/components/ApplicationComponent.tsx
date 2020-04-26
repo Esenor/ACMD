@@ -44,7 +44,6 @@ const ApplicationComponent = ({ informations, name, usage, parentApplication, de
           <InformationBadges informations={informations} />
           <Title title={name} subtitle={summary} />
           <TagContainer>{technologiesTags}</TagContainer>
-          <TagContainer>{locationsTags}</TagContainer>
         </Card>
       </StyledCard>
       <StyledModal
@@ -99,7 +98,8 @@ const StyledCard = styled.div`
       }
     }
     .ant-card-body {
-      min-height: 178px;
+      height: 180px;
+      overflow: scroll;
       padding: 24px 24px 4px 24px;
     }
     .ant-card-actions {

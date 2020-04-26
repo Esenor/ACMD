@@ -59,22 +59,22 @@ const InformationBadges = ({ informations }: InformationBadgePropsInterface) => 
     <StyledBadges>
       {
         badgesInformations.error.informations.length > 0 ? (
-          <Badge count={badgesInformations.error.informations.length} style={{ margin: 'auto 2px', backgroundColor: badgesInformations.error.color }}/>
+          <Badge dot={true} style={{ margin: 'auto 2px', backgroundColor: badgesInformations.error.color }}/>
         ) : null
       }
       {
         badgesInformations.warning.informations.length > 0 ? (
-          <Badge count={badgesInformations.warning.informations.length} style={{ margin: 'auto 2px', backgroundColor: badgesInformations.warning.color }}/>
+          <Badge dot={true} style={{ margin: 'auto 2px', backgroundColor: badgesInformations.warning.color }}/>
         ) : null
       }
       {
         badgesInformations.success.informations.length > 0 ? (
-          <Badge count={badgesInformations.success.informations.length} style={{ margin: 'auto 2px', backgroundColor: badgesInformations.success.color }}/>
+          <Badge dot={true} style={{ margin: 'auto 2px', backgroundColor: badgesInformations.success.color }}/>
         ) : null
       }
       {
         badgesInformations.info.informations.length > 0 ? (
-          <Badge count={badgesInformations.info.informations.length} style={{ margin: 'auto 2px', backgroundColor: badgesInformations.info.color }}/>
+          <Badge dot={true} style={{ margin: 'auto 2px', backgroundColor: badgesInformations.info.color }}/>
         ) : null
       }
     </StyledBadges>
