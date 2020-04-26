@@ -128,6 +128,6 @@ const StyledDivider = styled(Divider)`
 
 const GlobalStyle = createGlobalStyle`
   html, body {
-    background: #2E59E1;
+    background: #6B79FF;
   }
 `

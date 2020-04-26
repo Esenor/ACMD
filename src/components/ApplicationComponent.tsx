@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { Card, Modal, Button, Divider, Empty, List, Table, Descriptions } from 'antd'
+import { Card, Modal, Button, Divider, Empty, Descriptions } from 'antd'
 import { SearchOutlined } from '@ant-design/icons'
 import Title from './Title'
-import TagContainer, { tagContainerSizeEnum } from './TagContainer'
-import TechnologyTag from './TechnologyTag'
-import LocationTag from './LocationTag'
+import TagContainer, { tagContainerSizeEnum } from './tag/TagContainer'
+import TechnologyTag from './tag/TechnologyTag'
+import LocationTag from './tag/LocationTag'
 import InformationBadges from './InformationBadges'
-import Information from './Information'
-import UriName from './UriName'
+import InformationList from './list/InformationList'
+import UriTable from './table/UriTable'
 import { usageEnum, LocationInterface, TechnologyInterface, InformationInterface, UriInterface } from '../@types/ApplicationComponent'
 
 export interface ApplicationComponentProps {
@@ -65,19 +65,9 @@ const ApplicationComponent = ({ informations, name, usage, parentApplication, de
         <Divider orientation='left'>Environments locations</Divider>
         <TagContainer size={tagContainerSizeEnum.small}>{locationsTags}</TagContainer>
         <Divider orientation='left'>Uris</Divider>
-        <Table columns={[
-          { title: 'Name', dataIndex: 'name', key: 'name', width: '20%' },
-          { title: 'Uri', dataIndex: 'uri', key: 'uri' }
-        ]}
-        dataSource={uris.map((uri: UriInterface, i: number) => ({ key: i, name: (<UriName uri={uri} />), uri: uri.link }))}/>
+        <UriTable dataSource={uris}/>
         <Divider orientation='left'>Informations</Divider>
-        <>
-          {
-            (informations.length > 0) ?
-            <List>{informations.map((i: InformationInterface, c: number) => <Information information={i} key={c}/>) }</List>
-            : <Empty/>
-          }
-        </>
+        <InformationList dataSource={informations}/>
       </StyledModal>
     </>
   )

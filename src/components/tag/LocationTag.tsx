@@ -1,8 +1,8 @@
 import React from 'react'
-import StyledTag from '../styles/StyledTag'
+import StyledTag from '../../styles/StyledTag'
 import styled from 'styled-components'
 import { TiLocation as Icon } from 'react-icons/ti'
-import { environmentEnum } from '../@types/ApplicationComponent'
+import { environmentEnum } from '../../@types/ApplicationComponent'
 import { Tooltip } from 'antd'
 
 export interface LocationTagProps {
