@@ -99,7 +99,7 @@ const StyledCard = styled.div`
     }
     .ant-card-body {
       height: 180px;
-      overflow: scroll;
+      overflow: hidden;
       padding: 24px 24px 4px 24px;
     }
     .ant-card-actions {

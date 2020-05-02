@@ -96,7 +96,7 @@ const App = () => {
       <GlobalStyle/>
       <AppLayout >
         <div style={{ padding: '10px' }}>
-          <Button type='danger' onClick={() => { updateApplicationComponentsData(shuffleApplicationComponentsData()) }} style={{ marginRight: '10px' }}>Shuffle application components</Button>
+          <Button type='ghost' onClick={() => { updateApplicationComponentsData(shuffleApplicationComponentsData()) }} style={{ marginRight: '10px' }}>Shuffle application components</Button>
           <Button type={(displayMode === displayModeEnum.usage) ? 'primary' : 'default'} onClick={() => { updateDisplayMode(displayModeEnum.usage) }} style={{ marginRight: '10px' }}>Display by usage</Button>
           <Button type={(displayMode === displayModeEnum.parentApplication) ? 'primary' : 'default'} onClick={() => { updateDisplayMode(displayModeEnum.parentApplication) }}>Display by parent application</Button>
         </div>
