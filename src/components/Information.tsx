@@ -1,6 +1,7 @@
 import React from 'react'
+import styled from 'styled-components'
 import { List, Avatar } from 'antd'
-import { InfoCircleFilled, WarningFilled, CheckCircleFilled, ExclamationCircleFilled } from '@ant-design/icons'
+import { FaInfoCircle, FaExclamationCircle, FaCheckCircle, FaExclamationTriangle } from 'react-icons/fa'
 import { InformationInterface, informationScopeEnum } from '../@types/ApplicationComponent'
 
 export interface InformationPropsInterface {
@@ -11,14 +12,14 @@ const Information = ({ information }: InformationPropsInterface) => {
   const getRelatedIcon = (scope: informationScopeEnum): React.ReactNode => {
     switch (scope) {
       case informationScopeEnum.error:
-        return <Avatar style={{background: '#F5222D'}}icon={<ExclamationCircleFilled />}/>
+        return <StyledAvatar icon={<FaExclamationCircle color='#F5222D'/>}/>
       case informationScopeEnum.warning:
-        return <Avatar style={{background: '#FA8C16'}}icon={<WarningFilled />}/>
+        return <StyledAvatar icon={<FaExclamationTriangle color='#FA8C16'/>}/>
       case informationScopeEnum.success:
-        return <Avatar style={{background: '#52C41A'}}icon={<CheckCircleFilled />}/>
+        return <StyledAvatar icon={<FaCheckCircle color='#52C41A'/>}/>
       case informationScopeEnum.info:
       default:
-        return <Avatar style={{background: 'grey'}}icon={<InfoCircleFilled />}/>
+        return <StyledAvatar icon={<FaInfoCircle color='grey'/>}/>
     }
   }
   return (
@@ -37,5 +38,10 @@ const Information = ({ information }: InformationPropsInterface) => {
     </List.Item>
   )
 }
+
+const StyledAvatar = styled(Avatar)`
+  background: #F8F9FB;
+  padding: 1px;
+`
 
 export default Information

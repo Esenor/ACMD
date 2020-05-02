@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { notification, Badge } from 'antd'
-import { LinkOutlined } from '@ant-design/icons'
+import { Badge } from 'antd'
 import { informationScopeEnum, InformationInterface } from '../@types/ApplicationComponent'
 
 export interface InformationBadgePropsInterface {
@@ -18,37 +17,6 @@ interface FormatedInformationsBagesDataInterface {
   success: FormatedInformationsBageDataInterface
   warning: FormatedInformationsBageDataInterface
   error: FormatedInformationsBageDataInterface
-}
-
-const displayNotification = (informations: InformationInterface[]) => {
-  informations.forEach(information => {
-    const notificationParams = {
-      message: information.title,
-      description: (
-        <>
-          <div>{ information.message }</div>
-          <div><LinkOutlined/> { information.link }</div>
-        </>
-      ),
-      icon: null,
-      duration: 0
-    }
-    switch (information.scope) {
-      case informationScopeEnum.info:
-        notification.info(notificationParams)
-        break
-      case informationScopeEnum.error:
-        notification.error(notificationParams)
-        break
-      case informationScopeEnum.warning:
-        notification.warning(notificationParams)
-        break
-      case informationScopeEnum.success:
-      default:
-        notification.success(notificationParams)
-        break
-    }
-  })
 }
 
 const InformationBadges = ({ informations }: InformationBadgePropsInterface) => {
@@ -91,30 +59,22 @@ const InformationBadges = ({ informations }: InformationBadgePropsInterface) => 
     <StyledBadges>
       {
         badgesInformations.error.informations.length > 0 ? (
-          <span onClick={e => displayNotification(badgesInformations.error.informations)}>
-            <Badge count={badgesInformations.error.informations.length} style={{ margin: 'auto 2px', backgroundColor: badgesInformations.error.color }}/>
-          </span>
+          <Badge dot={true} style={{ margin: 'auto 2px', backgroundColor: badgesInformations.error.color }}/>
         ) : null
       }
       {
         badgesInformations.warning.informations.length > 0 ? (
-          <span onClick={e => displayNotification(badgesInformations.warning.informations)}>
-            <Badge count={badgesInformations.warning.informations.length} style={{ margin: 'auto 2px', backgroundColor: badgesInformations.warning.color }}/>
-          </span>
+          <Badge dot={true} style={{ margin: 'auto 2px', backgroundColor: badgesInformations.warning.color }}/>
         ) : null
       }
       {
         badgesInformations.success.informations.length > 0 ? (
-          <span onClick={e => displayNotification(badgesInformations.success.informations)}>
-            <Badge count={badgesInformations.success.informations.length} style={{ margin: 'auto 2px', backgroundColor: badgesInformations.success.color }}/>
-          </span>
+          <Badge dot={true} style={{ margin: 'auto 2px', backgroundColor: badgesInformations.success.color }}/>
         ) : null
       }
       {
         badgesInformations.info.informations.length > 0 ? (
-          <span onClick={e => displayNotification(badgesInformations.info.informations)}>
-            <Badge count={badgesInformations.info.informations.length} style={{ margin: 'auto 2px', backgroundColor: badgesInformations.info.color }}/>
-          </span>
+          <Badge dot={true} style={{ margin: 'auto 2px', backgroundColor: badgesInformations.info.color }}/>
         ) : null
       }
     </StyledBadges>
@@ -124,9 +84,6 @@ const InformationBadges = ({ informations }: InformationBadgePropsInterface) => 
 const StyledBadges = styled.div`
   position: relative;
   top: -8px;
-  &>span{
-    cursor: pointer;
-  }
 `
 
 export default InformationBadges

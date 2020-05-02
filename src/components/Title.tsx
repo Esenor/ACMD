@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { DockerIcon } from './Icons'
 
 export interface TitleProps {
   title: string
@@ -8,7 +9,10 @@ export interface TitleProps {
 
 const Title = ({ title, subtitle }: TitleProps) => (
   <>
-    <H1Styled>{title}</H1Styled>
+    <H1Styled>
+      <DockerIcon/>
+      {title}
+    </H1Styled>
     {subtitle ? (
       <small>{subtitle}</small>
     ) : null}

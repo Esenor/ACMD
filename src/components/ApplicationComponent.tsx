@@ -1,32 +1,29 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { Card, Modal, Button, Divider, Empty, List, Table } from 'antd'
-import * as IconsFa from 'react-icons/fa'
+import { Card, Modal, Button, Divider, Empty, Descriptions } from 'antd'
 import { SearchOutlined } from '@ant-design/icons'
 import Title from './Title'
-import TagContainer, { tagContainerSizeEnum } from './TagContainer'
-import TechnologyTag from './TechnologyTag'
-import LocationTag from './LocationTag'
+import TagContainer, { tagContainerSizeEnum } from './tag/TagContainer'
+import TechnologyTag from './tag/TechnologyTag'
+import LocationTag from './tag/LocationTag'
 import InformationBadges from './InformationBadges'
-import Information from './Information'
-import { usageEnum, LocationInterface, TechnologyInterface, InformationInterface } from '../@types/ApplicationComponent'
+import InformationList from './list/InformationList'
+import UriTable from './table/UriTable'
+import { usageEnum, LocationInterface, TechnologyInterface, InformationInterface, UriInterface } from '../@types/ApplicationComponent'
 
 export interface ApplicationComponentProps {
   usage: usageEnum
-  color?: string
   name: string
+  parentApplication: string
   summary?: string
   description?: string
+  uris: UriInterface[]
   technologies: TechnologyInterface[]
   locations: LocationInterface[]
   informations: InformationInterface[]
 }
 
-interface StyledCardProps {
-  topColor?: string
-}
-
-const ApplicationComponent = ({ informations, name, description, summary, technologies, locations }: ApplicationComponentProps) => {
+const ApplicationComponent = ({ informations, name, usage, parentApplication, description, summary, technologies, locations, uris }: ApplicationComponentProps) => {
   const [modalIsVisible, changeModalVisibility] = useState(false)
   const closeModal = () => {
     changeModalVisibility(false)
@@ -47,7 +44,6 @@ const ApplicationComponent = ({ informations, name, description, summary, techno
           <InformationBadges informations={informations} />
           <Title title={name} subtitle={summary} />
           <TagContainer>{technologiesTags}</TagContainer>
-          <TagContainer>{locationsTags}</TagContainer>
         </Card>
       </StyledCard>
       <StyledModal
@@ -56,7 +52,11 @@ const ApplicationComponent = ({ informations, name, description, summary, techno
         visible={modalIsVisible}
         onCancel={closeModal}
         onOk={closeModal}
-        footer={<Button type='primary' onClick={closeModal}>Ok</Button>}>
+        footer={<Button type='default' onClick={closeModal}>close</Button>}>
+        <Descriptions title='Overview'>
+          <Descriptions.Item label='Usage'>{usage}</Descriptions.Item>
+          <Descriptions.Item label='Parent application'>{parentApplication}</Descriptions.Item>
+        </Descriptions>
         <Divider orientation='left'>Description</Divider>
         <p>{(description) ? description : <Empty/>}</p>
         <Divider orientation='left'>Technologies</Divider>
@@ -64,55 +64,9 @@ const ApplicationComponent = ({ informations, name, description, summary, techno
         <Divider orientation='left'>Environments locations</Divider>
         <TagContainer size={tagContainerSizeEnum.small}>{locationsTags}</TagContainer>
         <Divider orientation='left'>Uris</Divider>
-        <Table columns={[
-          {
-            title: 'Name',
-            dataIndex: 'name',
-            key: 'name',
-            width: '20%'
-          },
-          {
-            title: 'Uri',
-            dataIndex: 'uri',
-            key: 'uri'
-          }
-        ]}
-        dataSource={[
-          {
-            key: '1',
-            name: (<><IconsFa.FaGithub color='grey' size='20px' style={{ verticalAlign: 'sub', marginRight: '5px' }}/><strong>GitHub</strong></>),
-            uri: 'https://github.com/Esenor/ACMD'
-          },
-          {
-            key: '2',
-            name: (<><IconsFa.FaJenkins color='red' size='20px' style={{ verticalAlign: 'sub', marginRight: '5px' }}/><strong>CI Job</strong></>),
-            uri: 'https://ci-tool/acmd/job'
-          },
-          {
-            key: '2',
-            name: (<><IconsFa.FaDocker color='#0073EC' size='20px' style={{ verticalAlign: 'sub', marginRight: '5px' }}/><strong>Docker FROM</strong></>),
-            uri: 'node:14'
-          },
-          {
-            key: '3',
-            name: (<><IconsFa.FaDocker color='#0073EC' size='20px' style={{ verticalAlign: 'sub', marginRight: '5px' }}/><strong>Docker Result</strong></>),
-            uri: 'Esenor/ACMD:latest'
-          }
-        ]}/>
-        <Divider orientation='left'>Actions</Divider>
-        <>
-          {
-            (informations.length > 0) ?
-            <List>
-              {
-                informations.map((i: InformationInterface, c: number) => (
-                  <Information information={i} key={c}/>
-                ))
-              }
-            </List>
-            : <Empty/>
-          }
-        </>
+        <UriTable dataSource={uris}/>
+        <Divider orientation='left'>Informations</Divider>
+        <InformationList dataSource={informations}/>
       </StyledModal>
     </>
   )
@@ -133,7 +87,6 @@ const StyledCard = styled.div`
     border-radius: 5px;
     color: #6E6D7A;
     background: #F8F9FB;
-    /* cursor: pointer; */
     &:hover {
       box-shadow: 10px 10px 17px -6px rgba(194, 194, 194, 0.5);
       .ant-card-actions {
@@ -145,7 +98,8 @@ const StyledCard = styled.div`
       }
     }
     .ant-card-body {
-      min-height: 178px;
+      height: 180px;
+      overflow: scroll;
       padding: 24px 24px 4px 24px;
     }
     .ant-card-actions {

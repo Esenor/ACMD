@@ -1,5 +1,5 @@
 import React from 'react'
-import StyledTag from '../styles/StyledTag'
+import StyledTag from '../../styles/StyledTag'
 
 export interface TechnologyTagProps {
   name: string
