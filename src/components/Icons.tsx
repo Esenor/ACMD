@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import * as IconFa from 'react-icons/fa'
+import * as IconGo from 'react-icons/go'
 
 interface IconContainerPropsInterface {
   children: React.ReactNode
@@ -34,6 +35,12 @@ export interface IconPropsInterface {
 export const DockerIcon = ({ size, color }: IconPropsInterface) => <>
   <StyledIconContainer color={color ?? '#0073EC'} size={size ?? defaultSize}>
     <IconFa.FaDocker/>
+  </StyledIconContainer>
+</>
+
+export const PackageIcon = ({ size, color }: IconPropsInterface) => <>
+  <StyledIconContainer color={color ?? '#grey'} size={size ?? defaultSize}>
+    <IconGo.GoPackage />
   </StyledIconContainer>
 </>
 

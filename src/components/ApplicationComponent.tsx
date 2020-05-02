@@ -98,8 +98,7 @@ const StyledCard = styled.div`
       }
     }
     .ant-card-body {
-      height: 180px;
-      overflow: hidden;
+      min-height: 180px;
       padding: 24px 24px 4px 24px;
     }
     .ant-card-actions {

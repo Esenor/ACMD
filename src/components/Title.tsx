@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { DockerIcon } from './Icons'
+import { DockerIcon, PackageIcon } from './Icons'
 
 export interface TitleProps {
   title: string
@@ -11,6 +11,7 @@ const Title = ({ title, subtitle }: TitleProps) => (
   <>
     <H1Styled>
       <DockerIcon/>
+      <PackageIcon/>
       {title}
     </H1Styled>
     {subtitle ? (
