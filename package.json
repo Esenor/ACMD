@@ -43,7 +43,7 @@
     ]
   },
   "devDependencies": {
-    "@types/faker": "4.1.11",
+    "@types/faker": "4.1.12",
     "@types/react-icons": "3.0.0",
     "@types/styled-components": "5.1.0",
     "faker": "4.1.0",
