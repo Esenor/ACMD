@@ -43,10 +43,10 @@
     ]
   },
   "devDependencies": {
-    "@types/faker": "4.1.12",
+    "@types/faker": "5.5.9",
     "@types/react-icons": "3.0.0",
     "@types/styled-components": "5.1.2",
-    "faker": "4.1.0",
+    "faker": "5.5.3",
     "tslint": "6.1.2",
     "tslint-config-standard": "9.0.0"
   },
